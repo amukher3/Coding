@@ -1,25 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jul  6 19:04:09 2019
+Spyder Editor
 
-@author: Abhishek Mukherjee
+This is a temporary script file.
 """
-from itertools import combinations
 
-inp=list(map(str, input().split()))
+from itertools import combinations_with_replacement
 
-S=sorted(inp[0])
-k=int(inp[1])
+word,space,numComb = input().rpartition(' ')
 
-n=list(range(1,k+1))
-combList=[]
+numComb=int(numComb)
 
-for i in range(len(n)):
-    combList.append(list(combinations(S,n[i])))
-    
-for i in range(len(n)):
-    #sortedList=sorted(combList[i][:])
-    sortedList=combList[i][:]
-    for j in range(len(sortedList)):
-        joinedList="".join(sortedList[j][:])
-        print(joinedList.strip("'"))
+lst=list(combinations_with_replacement(sorted(word),numComb))
+
+for i in range(len(lst)):
+    print("".join(lst[i]))
