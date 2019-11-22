@@ -1,0 +1,193 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Module: 1:\par
+Q.1. A virtual desktop or virtual desktop infrastructure (VDI) means that a user\rquote s desktop environment is stored remotely on a server, rather than on a local PC or other client computing device. Desktop virtualization software separates the desktop operating systems, applications and data from the hardware client, storing this \ldblquote virtual desktop\rdblquote  on a remote server.\par
+Q.2.  A remote connection might have 1) bottlenecks: Depending on how many are trying to access the systems. 2) Dependent on the third party connections. \par
+Q.3) Using SSH tunneling,x11 forwarding\par
+Q.4) Scalability issue. Using multiple systems in the same hardware. \par
+Module 2:\par
+3.1:\par
+The following are the questions from the module NOT the questions at the end.\par
+Why is \\Proc a pseudo-file system?\par
+The proc file system is sometimes referred to as a process information pseudo-file system. It does not contain ``real'' files but rather runtime system information (e.g. system memory, devices mounted, hardware configuration, etc). For this reason it can be regarded as a control and information center for the kernel. It doesn't contain 'real' files but runtime system information (e.g. system memory, devices mounted, hardware configuration, etc).\par
+lsmod loads the modules used by the Kernel.\par
+Horizontal and vertical display. difference between ls -l and ls -L. \par
+done. \par
+done.\par
+ echo **\par
+gedit and unlink\par
+use touch and escape character.For ex, touch \\ #Hello for deleting a file with special symbol rm  ./#Hello\par
+touch \\ -Hello \par
+Can't delete...\par
+consents consented confers confered presents presented prefers prefered\par
+\par
+3.2:\par
+Part 1: Not done.\par
+Part 2: Foreground and Background process done.\par
+Part 3:Couldn't archive home directory. Probably had to be super user. \par
+Use "tar -zcvf backup.tar  Desktop" to make Desktop a backup.tar.gz folder\par
+For uncompressing first use gunzip backup backup.tar.gz\par
+next use, tar -xvf backup.tar\par
+&& bash and\par
+|| bash OR\par
+; separates the commands\par
+By reversing the precedence changes in the operation. For || the first one gets executed.\par
+N.B: The three slots in the permission catergory('--') tell owner of the file, the group in which the file belongs, and "others," meaning other users on the system. The order is owner,group,other users for each of the catergory the privileges would be defined by r,w,x.\par
+chmod a+r,a+x,a+w everybody\par
+chmod u+r,u+x,u+w,g+r ownerGroup\par
+Since we want to set the group owner to root we would need superuser privileges for that. Hence, after su we type\par
+chown root rootGrpOwner\par
+chmod a+x rootGrpOwner\par
+Will need su privileges to copy from the root etc is located in the root. After su privileges use cp passwd /home \par
+cp passwd /home/codac-dev/EpicsAcademy/LinuxModule\par
+3.2 \par
+telnet ---\par
+use ping as it is\par
+use traceroute as it is use the IP to find the city\par
+for wget first create a directory then go into the directory to view the html file after you have used wget. \par
+mkdir everydaylinuxuser\par
+ cd everydaylinuxuser\par
+wget {{\field{\*\fldinst{HYPERLINK www.everydaylinuxuser.com }}{\fldrslt{www.everydaylinuxuser.com\ul0\cf0}}}}\f0\fs22\par
+for viewing postscript files: ps2pdf file.ps\par
+It converts file.ps to file.pdf\par
+Again 3.1:\par
+For creating the softlink:\par
+ln -s /dev/tty terminal\par
+For verifying:\par
+ ls -l terminal\par
+for hard link just use 'ln'. Hard link cannot be created since it is across device. \par
+4.1 Questions:\par
+Q1. Already known\par
+Q1. cp, mv, rm, cd, mkdir\par
+Q2. absolute path is the path from the / direc.\par
+/home/ljubodoma/dnevnaSoba/../../slascicarna\par
+Q3. home\par
+Q4. under etc\par
+Q5. tab\par
+Q.6 After changing the permission we use ./filename to run an executable. \par
+Q.7. Would use output re-direction to redirect the output to some other device/file instead of the screen. STDIN--Keyboard STDOUT--screen. >\par
+Q.8. Does this mean a command within a shell script? OR $echo var_another_var\par
+Q.9. For adminstrative  tasks. \par
+Q.10. After the read and write privileges comes the owner and then the group. \par
+Already discussed till this point. \par
+4.2 Networking:\par
+1.  Not sure. \par
+2.  A port is a communication end point. System wise it is a logical construct.  \par
+3.Network Address Translation (NAT) is the process where a network device, usually a firewall, assigns a public address to a computer (or group of computers) inside a private network.\par
+4. remote connection.\par
+5. One has a subdomain prepended to it and the other doesn't. Technically,  example.com and {{\field{\*\fldinst{HYPERLINK http://www.example.com }}{\fldrslt{http://www.example.com\ul0\cf0}}}}\f0\fs22  are different domain names. They might not always be the same. In the second case an http command is being sent to the web server directing it to fetch and transmit the web page. \par
+4.3 Software Installation:\par
+1. Assemblage of files that are developed to perform a particular task. Yum. \par
+2. untar and unzip the file and then configure the files after that use make to compile the files and then install. \par
+3. Try to find out what went wrong, do a error logging. \par
+4. Need to install re2c first. \par
+Module 4: \par
+1.The main EPICS mailing list is called Tech-talk, and is used for technical discussions, questions and announcements.\par
+2. Manual and dev.guide\par
+3. PVs are the unique string address associated with the record. The default field is the name of the record. For ex, $(user):T_room\par
+4. The default PV associated with a record is the name of the record. For ex, $(user):T_room. \par
+5. Some of them are used and some of them are updated to run the IOC.\par
+6. The EPIC logo symbolizes the mission and people of the El Paso Intelligence Center.\par
+7. CA client. \par
+8. caput,camonitor,caget\par
+9. CA server\par
+10. IOCs\par
+11. They are the OPIs -- First BOY,MEDM,EDM\par
+12. An EPICS application is the interaction of many IOCs.\par
+13. Makefile\par
+Module 5: \par
+1. to create epics appliations. It creates files and directories needed for the app.\par
+2. It has many directories and many folders. bin, configure,db,dbd etc. Different directories have different files which interact with each other to run the app. \par
+3. db directory\par
+4. subsutitution files are like place holders used to substitute a value during run time. They are used as macros. The values written in them are substitute in the record during run time. The user.substitution files are in the Db folder.\par
+5. In the Makefiles. \par
+6. By making changes in the Makefile\par
+7. Db,dbd, iocBoot containing the start up script. \par
+8. makeBaseApp.pl\par
+9. iocBoot.  ./ st.cmd. After making changes in the makefile and changing the permission of st.cmd we run st.cmd. \par
+10. /db is created after compiling(running make) it just contains the record instances and the substitution files. /Db is created after we use build , it is where we place our record instances, it has the makefile that is used for including the record instances and the substitution templates. \par
+11. the files in the /db folder are read only. They can't be executed. \par
+12. dbl\par
+13. The field Time in the record the filed can then be accessed using dbl or dbgf.\par
+14. For setting values: caput -a [options] <PV name> <no of elements> <value> ...,For reading/printing: use caget\par
+15. Not sure. The closeset seems to be the channel acces link for a particular record:dbel. This produces the channel access event list for a particular record. \par
+16. added on software to do debugging. \par
+17. passive, periodic, event,I/o event,passive,Scan once.\par
+18.  For loading a custom database defination file, "test.dbd" we write "java -jar VisualDCT.jar -DVDCT_DIR=~/epics test.dbd test.db" can also be imported from the "import module" option under "file" option in the top toolbar. \par
+19. db are record instances but are read only. dbd are data base definations files. \par
+20. Links are like connections that are made to different types of records while they are being processed.These connections together help establish a certain kind of task. Difference between the various types of links lies in the way they are processed and whether they are input links or output links. For ex, PP and NPP. \par
+21. Differences: \par
+Apparent ones:\par
+The ai record in the first setup has its scan set to periodic while the ai record in the second setup has its scan as passive. \par
+In the first setup, the ai record has a forward link to the calc record in the second setup there isn't any such setup. \par
+The calc record in the first setup has a forward link wheras the calc record in the second setup doesn't have a flnk. The inp link in the calc record for the first setup is NPP but the inp link in the second setup is PP. \par
+The ao record in the first setup has its scan set to passive and the ao record in the second setup has its scan set to be periodic. The inp link in the ao record of the first set up has its processing set to non-passive whereas in the second setup the input link is process-passive. \line  \line Actually, the two setups are probably doing the same thing albeit in different ways. The second one seems to be a better implementation because in the first setup the ai record is processed twice. Firstly with the FLNK and the secondly calc writes the value because the inp link to calc has been set to NPP. \par
+Module 6:\par
+1.Yes\par
+2. If by display defaults they mean the display.opi , the schema, then it can be changed by adding widgets OR click CSS --> click Display-->click OPI editor perspective\par
+3. Snap to Grid can be implemented from the toolbar OR from the "properties" pallete under "display" category. \par
+4. Objects can be aligned by selecting the "align middle","align left","align right" options in the top toolbar.  \par
+5. By screen I am assuming window. A new window can be opened by clicking on the "window" button on the top and then selecting "new window".\par
+6. Not sure. Shell commands can be executed from the epics shell. \par
+7.Display can be changed from the "properties" pallete on the right side. \par
+8. For the old VM: CSS-->Alarms-->Alarm Table For the new VM: when a PV is connected and running the alarm statuses are shown in the properties pallete. \par
+9. Macros can be defined in the preference page OR they can be defined from the "properties" pallete OR right clicking the widget and selecting macros.\par
+10. Widget visibility can be changed from the "properties" pallete under the "behaviour" category under the "Rules" sub category. click on the "rules" add the PV name from the shell in the boolean expression write an expression something like "pv0>5". This will make the widget invisible whenever the value of the PV is higher than 5.  \par
+11. The PV data from the archive system(engine).  An Archive Engine takes PV data samples from a front-end computer, for example from EPICS IOCs via Channel Access, and places them in some data storage. The storage is a relational database , from the RDB the data is presented to a CSS based OPI.(Refer chapter 10 of the CSS developer's guide. Chapter-10 is The Archive system.)\par
+For EPICS record, the SCAN field in combination with the ADEL field of analog records determines when a new value is sent to the archive engine.\par
+Questions in the FirstBoy Ex: \par
+3. Screen Design: \par
+1. Follow the steps as written. \par
+2. use Help from the Old VM.\par
+3. First run the IOC and then create new file i.e newFile.opi and then change the PV name in the properties pallete after you have dragged a widget in the grid/canvas. \par
+4. Follow the steps as it is. \par
+5. Properties panel is already opened in the right side i.e the right pallete. \par
+6. change the grid spacing directly from the properties pallete already opened in the right side. \par
+7. macros can also be configured from the right pallete. Can also be edited by right clicking the widget for a particular pV as well. For ex, the meter placed on the grid can be right clicked to get the options. \par
+8. use macros from the right pallete. Can be edited. \par
+9.  Linking container are used to link another OPI file so open a different OPI file and then try to link the previous OPI file. For both the VMs use the linking container option from the right pallete under the  "Others" category below "Monitors" and "Graphics" and then under the properties pallete look for "OPI file" option under the "Behaviour" category. In the OPI file option link the OPI file that you are trying to embed or connect i.e add the path to the OPI file. \par
+10.just drag the graph icon from the "monitor" widget and start running the ioc and setting up the PV name .\par
+11. CSS-->Alarm for the old VM. Old VM is CSS and new VM is CS-studio. For the new VM Alarm statuses are automatically shown when the ioc is connected and running.\par
+12. Will look in later. \par
+13.Will look in later.\par
+14.Will look in later.\par
+Module 7:\par
+N.B: In the old VM I think I installed VDCT using a different link that link doesn't seem to be working today. Herein am entailing the process that I used to install VDCT here in the new VM.\par
+Use this link: {{\field{\*\fldinst{HYPERLINK https://sourceforge.net/projects/visualdct/files/ }}{\fldrslt{https://sourceforge.net/projects/visualdct/files/\ul0\cf0}}}}\f0\fs22\par
+Download the zip file: vdct_3-0-b.zip --> extract the contents --> get inside using cd ---> follow the procedure in the readme.txt\par
+Questions: \par
+1. Level up, zoom in,zoom out, zoom selection,base view,toolbar,statusbar,navigator,show grid,snap to grid, settings.\par
+2. File menu-->New\par
+3. using the "Morph record option" on the top.\par
+4. Just click on the link and move the cross hair to the INP field of any other reocrd. \par
+5. After you select the record on the right side two columns open one can edit the various fields there by clicking and editing there. Link properties can be also changed in a similar manner. \par
+6. The best way seems to be sofmodule in synApps help connect a large number of signals to the I/O field of a record. It uses an AND gate over a FPGA controlled I/O device that is controlled by switches which are basically PVs. For detailed refer :{{\field{\*\fldinst{HYPERLINK https://epics.anl.gov/bcda/synApps/softGlue/softGlueDoc.html }}{\fldrslt{https://epics.anl.gov/bcda/synApps/softGlue/softGlueDoc.html\ul0\cf0}}}}\f0\fs22\par
+7. click on "view" on the top --> click on "compactify canvas/zoom in/zoom out"\par
+8. Not sure. Probably, from the VAL field in the spreadsheet view. \par
+9. They are case sensitive. Record names can be 28 characters in size, can be a mix of upper and lower case characters, should be unique across all IOCs in the subnet\par
+10. The fields that always need to be considered are the fields generally common to all the records. These are for input type of records: INP,DTYP,RVAL,VAL,SIMM,SIML,SVAL,SIOL,SIMS. For output type of records:OUT,DTYP,VAL,OVAL,RVAL,RBV,DOL,OMSL,OIF,SIMM,SIML,SIOL,SIMS,IVOA,IVOV.\par
+11. I am assuming by configuration here it means that they are asking about configuring the records i.e the database configuration file(db or template). The input fields in the records can be set either by macros or as PV.If there are many inputs within a record then they can be set using a macro. \par
+Process variable is a unique string address specifying a particular record.For a particular record if we think that we don't need to monitor the input then we can directly set the input field to be a macro but if we think that the input variable needs to be monitored we can set it to be PV by making it come from record.For example, suppose the ai type record $(user):T_room takes the input temperature from a macro but then spits out the same value as the output of the record thereby making the room temperature a PV. \par
+At the end of the hierarchical chain in the record interaction the input has to come from a macro i.e different records interact,process update but then the sensors measures the input temperature of the room and reports it to the IOC. \par
+Module 10: \par
+N.B: Application Makefile is the Makefile in AppName/src directory.\par
+1.For a example type application that also uses the sequencer -- in the application Makefile,in the src directory and the config/RELEASE file. \par
+2. If I am understanding the question correctly, to verify if it has been included correctly I would type "seq"  and see if the sequencer is there or not or we can run a demo example as well. Demo example can be run from the examples/demo and run directory by typing demo.stcmd\par
+3. Yes, it is possible to use macros in the program. It can be done using assign statement. For ex, assign voltage to "\{unit\}:ai1" . The string within the curly braces is the name of a program parameter and the whole thing (the name and the braces) are replaced with the value of the parameter.So, in Sequencer macros are like placeholder for variables unlike EPICS only string can be passed as parameters for names , values can't be passed. \par
+4. State sets within a program may be synchronized through the use of event flags. ypically, one state set will set an event flag, and another state set will test that event flag within a transition clause.\par
+5. If more than one state are needed then the SNL will have more than one state. For ex, the A/C may have cooling and heating both. \par
+6. Sequencer can be debugged using the sequencer query commands: seqShow--displays information on all running state programs, seqShow--displays detailed information on program,seqChanShow---displays information on all channels,\par
+7. So, the SNC to C compiler compiles the SNL to C code the resulting C file can then be compiled with a C compiler. Because the SNL does not support the full C language, C code may be escaped in the program. The escaped code is not compiled by snc, instead it is literally copied to the generated C code. Escaped C code is written between % signs i.e %\{ \}% \par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
