@@ -8,7 +8,7 @@ Created on Thu Jan  2 15:18:12 2020
 #Lexicographic order
 # N can be 10^5
 #So, time complexity might matter!!
-
+#Not in linear time.
 #
 # Complete the solve function below.
 #
@@ -41,7 +41,6 @@ def solve(arr):
                 KeyCounts.append(Keys.count(Keys[i]))
 
     stPos=0   
-    tempVals=[] 
     FinalVals=[]
     for i in range(len(KeyCounts)):
         enPos=stPos+KeyCounts[i]
