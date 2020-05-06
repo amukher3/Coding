@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue May  5 19:11:41 2020
+@author: Abhishek Mukherjee
 
-@author: abhi0
+https://stackoverflow.com/questions/61624992/python-regexpt-to-match-a-word-with-several-dots
+
 """
 
 import re
