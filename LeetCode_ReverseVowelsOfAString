@@ -1,0 +1,16 @@
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        vowelLst=['a','e','i','o','u','A','E','I','O','U']
+        tempWord=[]
+        tempWord.extend(s)
+        tempVow=[]
+        tempIdx=[]
+        for index,i in enumerate(s):
+            if i in vowelLst:
+                tempVow.append(i)
+                tempIdx.append(index)
+        tempVow=tempVow[::-1]
+        for count,i in enumerate(tempIdx):
+            tempWord[i]=tempVow[count]
+
+        return ''.join(tempWord)
