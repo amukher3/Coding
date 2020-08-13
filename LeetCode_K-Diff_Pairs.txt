@@ -1,0 +1,22 @@
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        leftPtr=0
+        rightPtr=1
+        cnt=0
+        temp=[]
+        nums=sorted(nums)
+        while rightPtr<=len(nums)-1:
+            if abs(nums[rightPtr]-nums[leftPtr])==k:
+                if (nums[leftPtr],nums[rightPtr]) not in temp and (nums[rightPtr],nums[leftPtr]) not in temp:
+                    temp.append((nums[leftPtr],nums[rightPtr]))
+                    cnt+=1
+                leftPtr+=1
+            elif abs(nums[rightPtr]-nums[leftPtr])<k:
+                rightPtr+=1
+            elif abs(nums[rightPtr]-nums[leftPtr])>k:
+                leftPtr+=1
+            if leftPtr==rightPtr:
+                rightPtr+=1
+            
+                
+        return cnt
