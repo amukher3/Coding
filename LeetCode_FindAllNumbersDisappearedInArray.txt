@@ -1,0 +1,28 @@
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        if nums==[]:
+            return []
+        temp=[]
+        if len(nums) not in nums:
+            temp.append(len(nums))
+            nums.append(len(nums))
+            
+        if 1 not in nums:
+            nums.append(1)
+            temp.append(1)
+        nums=sorted(nums)
+        i=0
+        tempPrime=len(nums)       
+        while i<tempPrime-1:
+            if nums[i+1]-nums[i]<=1:
+                i+=1
+                continue
+            else:
+                val=nums[i]+1
+                temp.append(val)
+                nums.insert(i+1,val)
+            i+=1
+            tempPrime=len(nums)
+                
+        return temp
+        
