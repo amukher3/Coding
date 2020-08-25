@@ -1,33 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jul 26 12:41:41 2020
+Created on Tue Aug 25 02:50:21 2020
 
-@author: abhi0
+@author: Abhishek Mukherjee
 """
 
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        
-        if len(s)==0:
-            return ""
-        if len(s)==1:
-            return s
-        
+    def longestPalindrome(self, s: str) -> int:
+        tempDict=dict()
+        tempS=[]
+        tempS.extend(s)
+        for i in set(tempS):
+            cnt=tempS.count(i)
+            tempDict.update({i:cnt})
+            
         flag=0
-        tempPrime=[]
-        tempLen=0
+        cntPrime=0
         
-        for i in range(len(s)-1):
-            for j in range(i+1,len(s)+1):
-                temp=s[i:j]
-                if len(temp)>1 and temp==temp[::-1]:
-                    if len(temp)>tempLen:
-                        tempLen=len(temp)
-                        tempPrime=temp
-                        flag=1
-                    
-        if flag==0:
-            return s[0]
+        for key,values in tempDict.items():
+            if values%2!=0:
+                cntPrime+=(values-1)
+                flag=1
+            else:
+                cntPrime+=values
+    
+        if flag==1:
+            return cntPrime+1
         else:
-            return tempPrime
-                
+            return cntPrime
+        
