@@ -1,0 +1,19 @@
+class Solution:
+    def divisorGame(self, N: int) -> bool:
+        #Alice starts first.
+        turn=1 #Alice
+        #odd count represents the last 
+        #move was Bob's while even means 
+        #the last move was Alice's. 
+        while N>1:
+            for i in range(1,N):
+                x=i
+                if N%x==0:
+                    turn+=1
+                    break
+            N=N-x  
+        if turn%2==0:
+            return True
+        else:
+            return False
+            
