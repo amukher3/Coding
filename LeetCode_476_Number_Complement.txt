@@ -1,0 +1,27 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        temp=[]
+        while num>1:
+            rem=num%2
+            temp.append(rem)
+            print(rem)
+            num = floor(num/2)
+        temp.append(1)
+        
+        ##complement part:
+        temp_prime=[]
+        for i in temp:
+            if i==0:
+                temp_prime.append(1)
+            else:
+                temp_prime.append(0)
+                
+        #newDecimal is:
+        s=0
+        print()
+        for i in range(len(temp_prime)):
+            num = (2**i)*temp_prime[i]
+            print(num)
+            s=s+num
+        return s
+            
