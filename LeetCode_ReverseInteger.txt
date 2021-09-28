@@ -1,0 +1,35 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        
+        if x==0:
+            return 0
+        
+        if x<0:
+            str1=str(x)
+            str1=str1[1:]
+            str1=str1[::-1]
+            str2='-'+str1
+            if int(str2)<-2**31:
+                return 0
+        else:
+            str1=str(x)
+            str2=str1[::-1]
+            if int(str2)>2**31:
+                return 0
+            
+        tempLst=[]
+        tempLst.extend(str2)
+        tempPrime=tempLst.copy()
+        flag=0
+        for i in tempLst:
+            if i!='0' and i!='-':
+                flag=1
+            if i=='0' and flag!=1:
+                tempPrime.remove(i)
+                
+        tempStr=''.join(tempPrime) 
+        
+        return tempStr
+            
+        
+        
