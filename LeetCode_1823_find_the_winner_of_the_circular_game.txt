@@ -1,0 +1,12 @@
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+        arr = list(range(1,n+1))
+        adjust_ptr = 0
+        while len(arr)>1:     
+            temp_ptr = (k - 1) + adjust_ptr
+            if temp_ptr>len(arr)-1:
+                temp_ptr = temp_ptr%len(arr)
+            arr.pop(temp_ptr)
+            adjust_ptr = temp_ptr 
+        return arr[0]
+        
