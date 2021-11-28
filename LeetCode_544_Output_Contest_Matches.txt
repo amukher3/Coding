@@ -1,0 +1,27 @@
+class Solution:
+    def findContestMatch(self, n: int) -> str:
+        temp_arr = []
+        arr = (list(range(1,n+1)))
+        j=1
+        cnt = 0
+        while cnt<n:
+            i=0
+            j+=1
+            while i<=(len(arr)/2)-1:
+                arr_1 = arr[:int(len(arr)/2)]
+                arr_2 = arr[int(len(arr)/2):]
+                arr_2 = arr_2[::-1]
+                temp_exp = '('+ str(arr_1[i]) +','+ str(arr_2[i])+')'
+                temp_arr.append(temp_exp)
+                i+=1
+            arr = temp_arr
+            temp_arr = []
+            cnt=2**j
+        if len(arr)<=1:
+            return ",".join(arr)
+        else:
+            return "("+",".join(arr)+")"
+            
+        
+            
+        
