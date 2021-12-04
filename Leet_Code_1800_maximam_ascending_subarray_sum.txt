@@ -1,0 +1,22 @@
+class Solution:
+    def maxAscendingSum(self, nums: List[int]) -> int:
+        main_sum = 0
+        left_ptr = 0
+        right_ptr = 0        
+        while right_ptr<len(nums)-1:
+            if nums[right_ptr+1]>nums[right_ptr]:
+                right_ptr+=1
+                continue
+            else:
+                temp_sum = sum(nums[left_ptr:right_ptr+1])
+                if temp_sum>main_sum:
+                    main_sum = temp_sum
+                left_ptr = right_ptr+1
+                right_ptr+=1
+                continue
+        if sum(nums[left_ptr:right_ptr+1])>main_sum:
+            return (sum(nums[left_ptr:right_ptr+1]))
+        else:
+            return main_sum
+            
+            
