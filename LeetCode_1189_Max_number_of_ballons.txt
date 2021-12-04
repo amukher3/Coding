@@ -1,0 +1,15 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        cntr=0
+        for i in text:
+            if i in origin_dict.keys():
+                    temp_dict[i]+=1
+                    
+        o_cnt = temp_dict['o']/2
+        l_cnt = temp_dict['l']/2
+        rest_min = min(temp_dict['b'],temp_dict['a'],temp_dict['n'])
+        main_cnt = min(o_cnt,l_cnt,rest_min)
+        
+        return floor(main_cnt)
+     
+                
