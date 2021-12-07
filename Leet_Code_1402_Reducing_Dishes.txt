@@ -1,38 +1,83 @@
 class Solution:
     def maxSatisfaction(self, satisfaction: List[int]) -> int:
         
+        """
+        Greedy aaproach
+        Choose the array with the higher
+        sum of products at every pass.
+        """
+        
+        #If all the elements are negative
+        #then the chef doesn't prepare anything
+        #since no-one likes any of the dishes.
         if max(satisfaction)<0:
             return 0
         
+        #sort the likeliness of the dishes
+        #inorder of increasing value.
         sorted_satisfaction  = sorted(satisfaction)
         
+        #If all the dishes are likeable then the chef
+        #doesn't need to drop any dish.calculate the 
+        #sum of products value as it is.
         tot_sum=0
         if min(sorted_satisfaction)>=0:
             for k in range(1,len(sorted_satisfaction)+1):
                 tot_sum = tot_sum + sorted_satisfaction[k-1]*k 
             return tot_sum
         
+        
+        #The case where we need to drop dishes
+        #based on the assortment giving the
+        #lower value compared to the case 
+        #where the assortment has a higher value.
         for i in range(len(sorted_satisfaction)-1):
             
+            #The case where the total value 
+            #of the assortment is calculated
+            #without dropping any dish.
             tot_sum1 = 0 
             for ip in range(1,len(sorted_satisfaction)+1):
                 tot_sum1 = tot_sum1 + sorted_satisfaction[ip-1]*ip 
                 
             temp = sorted_satisfaction
+            
+            #drop the first element ie the
+            #dish with the lowest value in
+            #the present assortment. 
             popped_ele = temp.pop(0)
             tot_sum=0
             
+            #Calculate the total value 
+            #of the assortment of dishes
+            #after dropping the dish with
+            #minm. value.
             for j in range(1,len(temp)+1):
                 tot_sum = tot_sum + temp[j-1]*j
-                    
+            
+            #Compare the two cases i.e where the
+            #dish is dropped and the where the dish
+            #is retained for a particular subser of 
+            #the entire assortment. 
             if tot_sum1<tot_sum:
+                #The case where dropping the dish
+                #gives a higher value.
                 result = temp
             else:
+                #In the scenario where  
+                #retaining a particular dish
+                #gives a higher value.
+                #adding the initially dropped
+                #element since the second case 
+                #has been found true.
                 temp = [popped_ele] + temp
                 result = temp
                 break
          
-                
+        #Calculating the total
+        #sum of products after 
+        #the final assortment has
+        #been found out. 
         temp_sum = 0
         for i in range(1,len(result)+1):   
             temp_sum = temp_sum + result[i-1]*i
