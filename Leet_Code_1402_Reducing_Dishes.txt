@@ -1,0 +1,45 @@
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        
+        if max(satisfaction)<0:
+            return 0
+        
+        sorted_satisfaction  = sorted(satisfaction)
+        
+        tot_sum=0
+        if min(sorted_satisfaction)>=0:
+            for k in range(1,len(sorted_satisfaction)+1):
+                tot_sum = tot_sum + sorted_satisfaction[k-1]*k 
+            return tot_sum
+        
+        for i in range(len(sorted_satisfaction)-1):
+            
+            tot_sum1 = 0 
+            for ip in range(1,len(sorted_satisfaction)+1):
+                tot_sum1 = tot_sum1 + sorted_satisfaction[ip-1]*ip 
+                
+            temp = sorted_satisfaction
+            popped_ele = temp.pop(0)
+            tot_sum=0
+            
+            for j in range(1,len(temp)+1):
+                tot_sum = tot_sum + temp[j-1]*j
+                    
+            if tot_sum1<tot_sum:
+                result = temp
+            else:
+                temp = [popped_ele] + temp
+                result = temp
+                break
+         
+                
+        temp_sum = 0
+        for i in range(1,len(result)+1):   
+            temp_sum = temp_sum + result[i-1]*i
+            
+        return temp_sum
+        
+        
+                
+                    
+                
