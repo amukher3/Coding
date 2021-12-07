@@ -1,13 +1,21 @@
 class Codec:
     def encode(self, strs: [str]) -> str:
         """Encodes a list of strings to a single string.
+            join the encoded strings(words) in a way 
+            such that the delimeter separating the words
+            can never be present in the test strings.
         """
-        return 'bkp'.join(strs)
+        return 'atilda'.join(strs)
         
 
     def decode(self, s: str) -> [str]:
         """Decodes a single string to a list of strings.
         """
-        str_lst = s.split('bkp')
+        str_lst = s.split('atilda')
         return str_lst
         
+
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
