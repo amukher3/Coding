@@ -1,0 +1,19 @@
+class Solution:
+    def countVowelSubstrings(self, word: str) -> int:
+        cntr = 0
+        for i in range(len(word)):
+            temp_lst = []
+            for j in range(i,len(word)):
+                if word[j] == 'a' or word[j] == 'e' or word[j] == 'i' or word[j] == 'o' or word[j] == 'u':
+                    
+                    #if the element is a vowel
+                    #append it to the list
+                    temp_lst.append(word[j])
+                    
+                    #checking if the list all the
+                    #exclusive five elements:
+                    if len(list(set(temp_lst))) == 5:
+                        cntr+=1
+                else:
+                    break
+        return cntr    
