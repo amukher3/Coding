@@ -1,0 +1,46 @@
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        #left_ptr for the trailing end
+        # .e the start of the sub-string
+        left_ptr = 0
+        
+        #right_ptr for the leading end
+        #leading end of the sub-str
+        #Initially, right_ptr will be
+        #ahead of the left_ptr by 1. 
+        right_ptr = left_ptr+1
+        
+        #cntr to keep track of the 
+        #counts when the sub-string
+        #becomes same as the string.
+        cnt = 0
+        
+        #Combining the left_ptr and 
+        #right_ptr we will take out
+        #contagious chunks of sub-strings
+        #from the string. 
+        #Initially, the right_ptr will
+        #be ahead by 1 but this difference
+        #will increase and will become one
+        #less than the length of the string
+        #as we traverse through the string.
+        #After one traversal through the string
+        #we would increase the left_ptr by 1 to
+        #take the contagious sub-string begining 
+        #from the next index. 
+        #Whenever the string and its reverse 
+        #matches up we increment the counter by 1. 
+        while left_ptr<len(s):
+            while right_ptr<=len(s):
+                sub_str = s[left_ptr:right_ptr]
+                rev_str = sub_str[::-1]
+                if sub_str == rev_str:
+                    cnt+=1
+                right_ptr+=1
+            left_ptr+=1
+            right_ptr = left_ptr+1
+        return cnt    
+            
+    
+        
+        
