@@ -1,0 +1,60 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        
+        keyboard_lst = ["qwertyuiopQWERTYUIOP","asdfghjklASDFGHJKL",
+                       "zxcvbnmZXCVBNM"]
+        
+        temp_words = []
+        for word in words:
+            temp_prime = []
+            for ltr in word:
+                temp_prime.append(ltr)
+            temp_words.append(temp_prime)
+        
+        final_words = []
+        for word in temp_words:
+            temp = []
+            prev_ptr = -1
+            for idx,ltr in enumerate(word):
+                
+                """"
+                if the letter falls in the top list of keyboard 
+                alphabets and also the previous letter was in the
+                first list of alphabets append it to the list. 
+                For the first letter in the first word one has to
+                append it to the corresponding keyboard_lst without
+                any previous_ptr value hence idx is taken. So when the 
+                idx is zero just append the letter to its corresponding
+                keyboard_lst
+                """
+                
+                if (ltr in keyboard_lst[0] and prev_ptr == 0) or (ltr in keyboard_lst[0] and idx == 0):
+                    temp.append(ltr)
+                    prev_ptr = 0
+                elif (ltr in keyboard_lst[1] and prev_ptr == 1) or (ltr in keyboard_lst[1] and idx == 0):
+                    temp.append(ltr)
+                    prev_ptr = 1
+                elif (ltr in keyboard_lst[2] and prev_ptr == 2) or (ltr in keyboard_lst[2] and idx == 0 ):
+                    temp.append(ltr)
+                    prev_ptr = 2
+
+            """"
+            If the formed(appended) word falls in the list of given
+            words and if the word has not been added before add it to 
+            the final list.The only case where a word is added to the
+            list of words inspite of it already being there is when there
+            is repitition of the word in the original list of words.
+            """
+            if (temp in temp_words and ''.join(temp) not in final_words) or (temp in temp_words and len(list(set(words)))<len(list(words))):
+                final_words.append(''.join(temp))
+
+                
+                
+        return final_words
+                    
+                    
+                
+            
+        
+    
+        
