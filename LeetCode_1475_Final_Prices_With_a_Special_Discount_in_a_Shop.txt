@@ -1,0 +1,19 @@
+class Solution:
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        fin_price = []
+        disc = []
+        for i in range(len(prices)-1):
+            flag = 0
+            for j in range(i+1,len(prices)):
+                
+                if prices[j]<=prices[i]: #looks for the next smaller element
+                    fin_price.append(prices[i]-prices[j]) #appends the (price-discount)
+                    flag  = 1 #if the element is found set the flag
+                    break # and then break since we don't need to look anymore
+                    
+            if flag == 0: #if the next smaller element is not found flag will not be set
+                fin_price.append(prices[i])   #no discount just append the price
+                
+        return fin_price+prices[len(fin_price):]   
+            
+        
