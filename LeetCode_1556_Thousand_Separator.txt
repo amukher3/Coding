@@ -1,0 +1,35 @@
+class Solution:
+    def thousandSeparator(self, n: int) -> str:
+        
+        #revert the integer so that putting the dot 
+        #after every 3 elements from the end becomes
+        #easier ie by reverting the dot can be placed
+        #after every 3 element from the begining. 
+        str1 = str(n)[::-1]
+        lst = []
+        
+        for i in str1:
+            lst.append(i)
+            
+        if len(lst)>3:
+            fin_lst = [] 
+            i = 1 #start with 1 so that divisible by 3 property can be easily used i.e after every 3 elements can be used
+            while i<=len(lst):
+                #check if the index is after 3 points after
+                #the first 3 points i.e for every 3 points after 3 points.
+                #If its so add the dot and take the 3rd(or multiple) element
+                #out to append it after that. 
+                if i>3 and i%3 == 1:  
+                    fin_lst.append('.')
+                    temp = lst[i-1]
+                    fin_lst.append(temp)
+                else:
+                    fin_lst.append(lst[i-1])
+                i+=1
+            return ''.join(fin_lst)[::-1]
+        else:
+            #If the lenth of the integer
+            #is less than 3 then directly return the string.
+            return str(n)
+        
+        
