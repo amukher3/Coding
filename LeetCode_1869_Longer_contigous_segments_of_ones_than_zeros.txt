@@ -1,0 +1,76 @@
+class Solution:
+    def checkZeroOnes(self, s: str) -> bool:
+        
+        #Edge cases where the length of
+        #the string is 1 the returned 
+        #value is dependent on the 
+        #value in the series. 
+        if len(s) == 1 and s[0] == '1':
+            return True 
+        elif len(s) == 1 and s[0] == '0':
+            return False
+        
+        zero_cntr, ones_cntr = 0, 0
+        one_cnt_lst, zero_cnt_lst  = [], []
+        
+        #Iterate through the list 
+        for i in range(1,len(s)):
+            
+            #If the previous value is same as
+            #the present value and the value
+            #is 1. Increment the 'ones_cntr' 
+            #by 1 append the last value of the
+            #'zero_cntr' to the counts list 
+            #and clear the 'zero_cntr'
+            #for the future runs of zeros. 
+            if s[i-1] == s[i] and s[i] == '1':
+                zero_cnt_lst.append(zero_cntr)
+                zero_cntr = 0
+                ones_cntr += 1
+                
+            #Similar logic as previous except for 
+            #the case where the value at hand is 0.
+            elif s[i-1] == s[i] and s[i] == '0':
+                one_cnt_lst.append(ones_cntr)
+                ones_cntr = 0
+                zero_cntr +=1
+                
+            #for the case where the present-value is not 
+            #same as the previous value in this 
+            #case append the zeros count to the
+            #zero counter and the one's count
+            #to the one's counter and clear the 
+            #counts for future runs of 0s and 1s. 
+            else:
+                zero_cnt_lst.append(zero_cntr)
+                zero_cntr = 0
+                
+                one_cnt_lst.append(ones_cntr)
+                ones_cntr = 0
+        
+        #If the count list for zeros is empty
+        #append a 0 to it so as to cover the cases
+        #when the list is not empty and the max
+        #count needs to be computed. 
+        if not one_cnt_lst:
+            one_cnt_lst.append(0)
+        
+        #Take the max of all the values in the list
+        #and the max between the max list value and 
+        #the value of the cntr so as to get the max
+        #value of counts that the run  of 1s ever took.
+        max_ones_count = max(ones_cntr,max(one_cnt_lst))
+        
+        #Similar logic as above
+        #but for the list of counts
+        #for 0. 
+        if not zero_cnt_lst:
+            zero_cnt_lst.append(0) 
+        max_zeros_count = max(zero_cntr,max(zero_cnt_lst))
+                
+        if max_ones_count > max_zeros_count:
+            return True
+        else:
+            return False
+            
+        
