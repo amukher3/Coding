@@ -1,0 +1,14 @@
+class Solution:
+    def addDigits(self, num: int) -> int:
+        str1 = str(num) #changing the integer to string to iterate through
+        #continue to add the string repitively
+        #until it has become of size less than 2
+        while len(str1)>=2:
+            s = 0 #initializing the accumulator
+            for i in str1: # iterate through the string(number)
+                s+=int(i) # keep adding the numbers
+            str1 = str(s) #replace the old string(number) by the new string(number)
+        return str1 
+        
+        
+        
