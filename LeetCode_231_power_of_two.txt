@@ -1,0 +1,38 @@
+class Solution:   
+    def checker_func(self,n):
+        #Edge case for negative
+        #numbers and for zero.
+        if n<=0:
+            return False
+        #If the number has reached
+        #1 then that means the recursion
+        #has reached its depth.
+        if n==1: ## Base Case ##
+            #If all the levels have been
+            #recursed from highest value
+            #then that means the number is
+            #a power of 2.
+            v1 = True
+            #Hence return True
+            return v1
+        #In the division process if the number
+        #becomes odd then start coming out of
+        #the recursion and return False.
+        elif mod(n,2) != 0 and n>1:       
+            v1 = False
+            return v1
+        ##Recursive stage##
+        #Recursion begins everytime the
+        #number is divided by 2 and passed
+        #to the calling function.
+        elif mod(n,2) == 0:
+            v1 = self.checker_func(n/2)
+        #return the final value
+        return v1
+                
+    def isPowerOfTwo(self, n: int) -> bool:
+        return self.checker_func(n)
+        
+       
+    
+            
