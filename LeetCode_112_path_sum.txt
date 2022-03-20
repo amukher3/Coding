@@ -1,0 +1,130 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def path_sum(self,node,target_sum,flag,tot_sum):
+        if node is None:
+            #Flag to denote that a path
+            #has been traversed be it 
+            #through "left" branches or "right"
+            #branches or a combination of 
+            #both. 
+            flag=1 
+            #return statement to climb
+            #up the traversed path
+            #i.e returning 
+            #to function starting the
+            #recursive calls.
+            return
+        else:
+            #Adding the node value to
+            #accumulate the sum for the
+            #traversed path. 
+            tot_sum+=node.val
+            #"main_sum" to keep in track 
+            # of the sum over all the nodes
+            #in the entire tree. 
+            self.main_sum = self.main_sum + node.val
+            #If the traversed path has reached to the 
+            #end check if the accumulated sum is 
+            #equal to the target_sum.
+            if tot_sum == target_sum and node.right is None and node.left is None:
+                #Set the boolean value equal
+                #to True if the sums are equal
+                self.bool_val = True
+                return self.bool_val
+            #Lauching dfs to the left subtree
+            if node.left is not None:
+                self.path_sum(node.left,target_sum,flag,tot_sum)
+                #An accumulator to count the branches
+                #branchiing out from the main left
+                #sub-tree(the left branch rooting from
+                #the main root node.)
+                self.branch_cntr+=1
+            #Checking the previously initialized
+            #flag denoting the end of the traversed
+            #path is 1 indicating the end of the 
+            #path.
+            if flag == 1:
+                #if end has been reached then
+                #climb up the tree or 
+                #pop the recursive calls from
+                #the call stack and start 
+                #deducting the node value
+                #from the total accumulated
+                #sum for that traversed path. 
+                tot_sum = tot_sum - node.val
+            #lauch dfs over the right sub-tree
+            if node.right is not None:
+                self.path_sum(node.right,target_sum,flag,tot_sum)
+                #count the number of branches 
+                #brancing out from the right
+                #sub-tree while traversing the
+                #main right sub-tree i.e the 
+                #sub tree branching out from
+                #the main root node. 
+                self.branch_cntr+=1
+                
+        return self.bool_val
+                
+    def hasPathSum(self, root: TreeNode, target_sum: int) -> bool:
+        if root is None:
+            return False
+        flag_sum=0
+        tot_sum=0
+        flag=0
+        #Setting the boolean
+        #value as an Instance
+        #variable since the 
+        #boolean value
+        #shouldn't change
+        #once it has been set. 
+        self.bool_val = False
+        #Instance variable to keep
+        #track of the sum over the
+        #main sub-brancehs i.e the
+        #main left and right sub-tree
+        self.main_sum = 0
+        #Counter to keep track 
+        #the number of branches
+        #branching out from the main
+        #sub-trees.
+        self.branch_cntr = 0
+        #Final boolean value reached after
+        #traversing all the paths. 
+        temp_val = self.path_sum(root,target_sum,flag,tot_sum)
+        #If the boolean value reached is
+        #"True" then obviously return
+        #True.
+        if temp_val == True:
+            return True
+        #If the final boolean value is
+        #not true then check if 
+        #sum of all the nodes in the tree
+        #equals the target sum at the same
+        #time check if there just 2 sub-trees
+        #in the entire tree i.e there
+        #aren't any sub-branches branching 
+        #from the main sub-trees. This in turn
+        #would indicate that there is just
+        #one path from the end node in the
+        #left sub-tree to the end node in 
+        #the right sub-tree i.e no branches
+        #apart from the sub-branches branching
+        #out from the main root node hence 
+        #forming a path from left to right. 
+        #In that case only check the sum over
+        #all the nodes. 
+        if self.branch_cntr == 2 and self.main_sum == target_sum:
+            return True
+        
+        return False
+       
+        
+
+    
+        
+        
