@@ -1,0 +1,42 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def dfs_sum(self,root,low,high,tot_sum=0): 
+        #Base case: if the entire tree
+        #has been traversed then send 
+        #the total sum:
+        if root.val is None:
+            return self.tot_sum
+        else:
+            #If the value of the node lies
+            #between the lower and upper 
+            #bound then add that value:
+            if root.val>=low and root.val<=high:
+                self.tot_sum+=root.val
+            #Look in the left sub-tree if 
+            #its not None launch dfs:
+            if root.left is not None:
+                self.dfs_sum(root.left,low,high,tot_sum)
+            #Look in the right sub-tree
+            #if its not None launch dfs:
+            if root.right is not None:
+                self.dfs_sum(root.right,low,high,tot_sum)       
+        return self.tot_sum
+     
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        #Make ths sum an instance varible
+        #since the total_sum will be
+        #modified at every recursive
+        #call the varible will be updated
+        #making it global makes the location
+        #of the variable outside the function
+        #that gets recursively updated. 
+        self.tot_sum=0
+        return self.dfs_sum(root,low,high)
+        
+        
+        
