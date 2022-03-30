@@ -1,0 +1,35 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def mode_finder(self,node):
+        #Base case:
+        if node is None:
+            return 
+        else:
+            #Initializing the dictionary with elements
+            #and their counts.
+            if str(node.val) in self.temp_dict.keys():
+                self.temp_dict[str(node.val)]+=1
+            else:
+                self.temp_dict.update({str(node.val):1})
+            #Running DFs on the left nodes:
+            if node.left is not None:
+                self.mode_finder(node.left)
+            #Running DFs on the right node:
+            if node.right is not None:
+                self.mode_finder(node.right)
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        self.temp_dict={}
+        self.mode_finder(root)
+        temp_vl=max(self.temp_dict.values()) #Getting the max value
+        temp_val=[]
+        #A loop to see if there are more elements
+        #with the same mode value.
+        for ky,vl in self.temp_dict.items():
+            if vl>=temp_vl:
+                temp_val.append(int(ky)) 
+        return temp_val
