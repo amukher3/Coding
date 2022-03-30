@@ -1,0 +1,40 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def helper(self, node, level):
+        
+        #As the size of the list matches
+        #the levels 
+        if len(self.levels) == level:
+            self.levels.append([])
+
+        #Append the current value to the 
+        #list corresponding to its level
+        self.levels[level].append(node.val)
+
+        #Launching Dfs unto the left child
+        if node.left:
+            self.helper(node.left, level + 1)
+            
+        #Launching Dfs unto the right child
+        if node.right:
+            self.helper(node.right, level + 1)
+            
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+        #Setting the final list
+        #to be instance variable so 
+        #that its values are not 
+        #re-assigned according to
+        #the values of the variable
+        #in that function within
+        #within the recursion calls. 
+        self.levels=[]
+        self.helper(root,0)
+        return self.levels
+        
