@@ -1,0 +1,37 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def max_depth(self,node,temp_height):
+        if node.left is None and node.right is None:
+            #As the leaf node is reached append 
+            #the height for the taken
+            #path
+            self.height.append(temp_height)
+            return
+        else:
+            temp_height+=1 #Incrementing the height
+            if node.left is not None:
+                self.max_depth(node.left,temp_height) #Launching Dfs
+            if node.right is not None:
+                self.max_depth(node.right,temp_height) #Launching Dfs
+        return
+        
+        
+    def maxDepth(self, root: TreeNode) -> int:
+        #For empty edge case
+        if not root:
+            return 0
+        #Setting the height list as
+        #an instance since this
+        #shouldn't be modified
+        #while moving back in the 
+        #recursion calls.
+        self.height=[]
+        self.max_depth(root,temp_height=0)
+        return max(self.height)+1 #Adding one since we are counting nodes
+        
+        
