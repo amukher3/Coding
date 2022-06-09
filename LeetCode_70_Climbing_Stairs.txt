@@ -1,0 +1,16 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        
+        table = [0]*n
+        
+        if len(table) < 2:
+            return 1
+        
+        table[0] = 1
+        table[1] = 2
+        
+        for i in range(2,len(table)):
+            table[i] = table[i-1]+table[i-2]
+            
+        return table[len(table)-1]
+            
