@@ -1,0 +1,47 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+"""
+Approach: Do dfs from the top root node to
+the leaf node then subtract the root node
+value if its equal to the root node value
+then the sum of all the nodes is same as
+the root node.
+"""
+
+class Solution:
+    
+    def sum_checker(self, node):
+        # Base condition check:
+        if node.left is None or node.right is None:
+            # Sum for the leaf node
+            self.accumulator += node.val
+            return
+        else:
+            # Sum for all the nodes except
+            # the leaf node:
+            self.accumulator += node.val
+            # Null check for the node.left
+            if node.left is not None:
+                self.sum_checker(node.left)
+            # Null check for the node.right
+            if node.right is not None:
+                self.sum_checker(node.right)
+        return
+        
+    def checkTree(self, root: Optional[TreeNode]) -> bool:
+        
+        self.accumulator = 0
+        self.sum_checker(root)
+        # Condition check for the sum of the
+        # nodes with the root node.
+        if self.accumulator - root.val == root.val:
+            return True
+        else:
+            return False
+        
+        
