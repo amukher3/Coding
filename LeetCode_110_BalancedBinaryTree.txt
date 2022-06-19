@@ -1,0 +1,95 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+"""
+
+Primary Assumption: An empty tree is considered
+as balanced.
+
+A tree TT rooted at rr is balanced if 
+and only if the height of its two children
+are within 1 of each other and the subtrees
+at each child are also balanced.
+
+Therefore, we can compare the two child 
+subtrees' heights then recurse on each one.
+
+"""
+
+class Solution:
+    
+    # Computes the height of every node:
+    def height(self, root: TreeNode) -> int:
+        
+        # Base condition for the leaf node 
+        # height which should be.
+        # For both the sides(left,right) 0 is passed 
+        # for the level node at the end and then 
+        # 1 gets added with the max height. 
+        if not root:
+            return 0
+     
+        return 1 + max(self.height(root.left), self.height(root.right))
+    
+    def isBalanced(self, root: TreeNode) -> bool:
+        
+        # If the recursion has reached the leaf node then
+        # stop at the base conditon and pass the bool value 
+        # for the base condition i.e the tree under the 
+        # leaf node i.e the empty tree which is considered
+        # balanced.
+        # This just acts as a check to see if the recursion 
+        # has reached the leaf level node or not. The primary
+        # check is just the height difference check. 
+        if not root:
+            # Set this retrn_val the 
+            # final value that should be
+            # returned i.e the final that
+            # should be propagated upwards
+            # after the recursion has reached
+            # the leaf level node.
+            # This sets the final leaf node value
+            # when the leaf node is reached. If one
+            # sets the "retrn_val" as "x"then "x"
+            # would be propagated upwards after
+            # the recursion reached leaf node. 
+            retrn_val = True
+            return retrn_val
+       
+        
+        # Check if the given node is height balanced then start
+        # the recursion on its children nodes.
+        if abs(self.height(root.left) - self.height(root.right)) < 2:
+            
+            # Recursion on the left child:
+            left_bool = self.isBalanced(root.left) 
+            
+            # Recursion on the right child:
+            right_bool = self.isBalanced(root.right)
+            
+            # After the control comes here getting the 
+            # returned value from the leaf node from both
+            # the childs check whether the conditional 
+            # "left_bool" and "right_bool" values same as
+            # the return value getting from the leaf node 
+            # i.e "retrn_val" the returned value coming
+            # from the leaf node after recursion has 
+            # reached the leaf node.
+            # If the returned value from the leaf node 
+            # is "x" then that should be checked and then
+            # the same value should be propagated upwards.
+            if left_bool == True and right_bool == True:
+                # This return statement propagates the return
+                # value upward after it gets the matching
+                #"left_bool" and "right_bool" value
+                return True
+            else:
+                return False
+      
+     
+        
+        
