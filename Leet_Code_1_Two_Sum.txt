@@ -1,0 +1,15 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i in range(len(nums)):
+            hashmap[nums[i]] = i
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            # "hashmap[complement] != i" to remove the possibility
+            # of getting the element at the same position getting
+            # counted twice. This basically checks if the element or
+            # nums[i] considered isn't at the same position as its
+            # complement. 
+            if complement in hashmap and hashmap[complement] != i:
+                return [i, hashmap[complement]] 
+        
