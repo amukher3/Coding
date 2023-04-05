@@ -1,0 +1,21 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        strs_table = {}
+
+        for string in strs:
+
+            # Sorting every string:
+            sorted_string = ''.join(sorted(string))
+
+            if sorted_string not in strs_table:
+                strs_table[sorted_string] = []
+
+            # Sorted string serves as the key for
+            # that particular string. For example,
+            # "ate, eat" both have the same key 
+            # the sorted string "aet". This reduces
+            # the memory requirements. 
+            strs_table[sorted_string].append(string)
+        
+        # Return the values which are the lists
+        return list(strs_table.values())
