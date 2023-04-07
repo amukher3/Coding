@@ -1,0 +1,37 @@
+class Solution:
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        
+        def lca(node, p, q):
+
+            root_val = node.val
+
+            if p.val > root_val and q.val > root_val:
+                # "return" statement needed here to return
+                # the value within the recursive call. Since
+                # the "return node" has to satisfy an if clause
+                # to be executed we need the function to return
+                # value else where that return statement is not
+                # executed specially in cases where the LCA
+                # is not at a depth of 1. 
+                return lca(node.right, p, q)
+            elif p.val < root_val and q.val < root_val:
+                # "return" statement needed here to return
+                # the value within the recursive call. Since
+                # the "return node" has to satisfy an if clause
+                # to be executed we need the function to return
+                # value else where that return statement is not
+                # executed specially in cases where the LCA
+                # is not at a depth of 1. 
+                return lca(node.left, p, q)
+            else:
+                return node
+
+
+        node_ret = lca(root, p, q)
+        return node_ret
