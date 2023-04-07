@@ -1,0 +1,27 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def buildTree(self, preorder, inorder):
+
+        # Check if the inorder traversed tree is not empty
+        if inorder:
+
+            # Get the root element from the pre-order's
+            # first element which is the root. Use that
+            # to build the tree. Here "INDEX" is the postion
+            # where the root is in the inorder tree just use
+            # that. 
+            INDEX = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[INDEX])
+
+            # Build the left subtree from the left of the INDEX
+            root.left = self.buildTree(preorder, inorder[:INDEX])
+
+            # Build the right subtree from the right of the INDEX
+            root.right = self.buildTree(preorder, inorder[INDEX+1:])
+			
+            return root
