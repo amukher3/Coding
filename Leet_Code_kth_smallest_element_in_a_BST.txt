@@ -1,0 +1,45 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+
+    # Making the function used to inorder
+    # dfs global so that it can be used from
+    # within another function. 
+    global driven_func
+    
+    def driven_func(node):
+        if node is None:
+            return
+        
+        # Traverse the left subtree
+        driven_func(node.left) 
+        
+        # Doing in-order traversal and storing the
+        # value in the global list
+        ele_lst.append(node.val)
+        
+        # Traverse the right subtree
+        driven_func(node.right)
+        
+            
+                
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+
+        # Making the list for storing node values
+        # global so that the list doesn't change
+        # within recursive calls. Making it global
+        # lets it hold all the elements independent
+        # of the recursive calls. 
+        global ele_lst
+
+        ele_lst = []
+
+        driven_func(root)
+
+        if len(ele_lst) >= k:
+            return ele_lst[k-1]
+        
