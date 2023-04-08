@@ -1,0 +1,41 @@
+class Solution:
+    def minDeletions(self, s: str) -> int:
+
+        char_dict = dict()
+
+        # Build the dictionary of characters:
+        for i in s:
+            if i  not in char_dict.keys():
+                char_dict.update({i:1})
+            else:
+                char_dict[i] += 1
+
+        # Take the values of the dictionary 
+        # i.e the frequency of the characters
+        # as a list
+        val_lst = list(char_dict.values())
+
+        # Sort the frequency count so that
+        # similar counts are next to each other
+        val_lst = sorted(val_lst)
+
+        cnt = 0
+        i = 0
+        # iterate through the list
+        while i < len(val_lst) - 1:
+            # Check if two values are equal ignore the case 
+            # where the value is 0
+            if val_lst[i] == val_lst[i+1] and val_lst[i] != 0:
+                # Increment the count if they are equal
+                cnt += 1
+                # decrease the frequence indicating deletion
+                val_lst[i] -= 1
+                # Start from the begining of the list since
+                # the frequency of the counts has changed due
+                # to deletions
+                i = 0
+                continue
+
+            i += 1 
+        
+        return cnt
