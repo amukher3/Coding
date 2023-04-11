@@ -1,0 +1,61 @@
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+
+        ROWS, COLS = len(heights), len(heights[0])
+        atl, pac = set(), set()
+
+        def dfs(r, c, prev_height, visit):
+            
+
+            # Check for the cases where we 
+            # don't have to do recursion i.e
+            # base cases. If the bounds are 
+            # violated i.e the row or column
+            # index is less than 0 or the row
+            # or column index is same as the 
+            # number of rows or columns. In
+            # these cases end going into
+            # recursion. 
+            if ((r, c) in visit or r < 0 or 
+            c < 0 or r == ROWS or c == COLS
+            or heights[r][c] < prev_height):
+                return
+            
+            # Otherwise add the row and col.
+            # index to the passed set i.e for
+            # pacific or atlantic. 
+            visit.add((r,c))
+
+            # Do dfs on the adjacent 4 sides of
+            # a particular cell until one of the
+            # base conditions are met and the
+            # recursion ends.  
+            dfs(r+1, c, heights[r][c], visit)
+            dfs(r-1, c, heights[r][c], visit)
+            dfs(r, c+1, heights[r][c], visit)
+            dfs(r, c-1, heights[r][c], visit)
+
+
+        # Launch dfs for the columns connected
+        # to the pacific and the atlantic ocean.
+        for c in range(COLS):
+            dfs(0, c, heights[0][c], pac)
+            dfs(ROWS-1, c, heights[ROWS-1][c], atl)
+
+        # Launch dfs for the rows connected to the
+        # pacific and the atlantic ocean.
+        for r in range(ROWS):
+            dfs(r, 0, heights[r][0], pac)
+            dfs(r, COLS-1, heights[r][COLS-1], atl)
+
+        # return the intersection i.e the common
+        # elements between the two sets in the form
+        # of a list. 
+        return list(atl.intersection(pac))
+
+
+
+
+        
+
+        
