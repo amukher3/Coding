@@ -1,0 +1,48 @@
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+
+        # prepare a hashmap for the courses and their
+        # prerequisites
+        pre_map = {i:[] for i in range(numCourses)}
+
+        # Populate the hashmap with the courses and
+        # their pre-requisites. The key being the courses
+        # and the pre-requisites are the list of courses
+        # for a particular key.
+        for crs, pre in prerequisites:
+            pre_map[crs].append(pre)
+
+        visit_set = set()
+
+        # Doing DFS on the courses connected with their
+        # pre-requisites. Every course and their 
+        # pre-requisited can be thought of connected as 
+        # a graph. With an edge between the courses and 
+        # their courses. For details see the NeetCode 
+        # solution. 
+        def dfs(crs):
+            
+            # Here's the base condition of 
+            # returning False. If the course 
+            # has already been visited. 
+            if crs in visit_set:
+                return False
+
+            visit_set.add(crs)
+            for pre in pre_map[crs]:
+                if not dfs(pre): return False
+
+            visit_set.remove(crs)
+            pre_map[crs] = []
+
+            return True
+
+        for crs in range(numCourses):
+            if not dfs(crs): return False
+
+        return True
+
+        
+
+
+       
