@@ -1,0 +1,28 @@
+class Solution:
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        diameter = [0]
+
+        def longest_path(node):
+
+            if not node:
+                return 0
+
+            # recursively find the longest path in
+            # both left child and right child
+            left_path_height = longest_path(node.left)
+            right_path_height = longest_path(node.right)
+
+            # update the diameter if left_path plus right_path is larger
+            diameter[0] = max(diameter[0], left_path_height + right_path_height)
+
+            # return the longest one between left_path and right_path;
+            # remember to add 1 for the path connecting the node and its parent:
+            # Very similar to diameter only difference is that we are not adding
+            # the path lengths i.e the only difference between height and diameter
+            # is that the individual left_path and right_path are not added. 
+            present_path_height = max(left_path_height, right_path_height) + 1
+            return present_path_height
+
+        longest_path(root)
+        return diameter[0]
+      
