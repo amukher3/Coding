@@ -1,0 +1,25 @@
+class Solution:
+    def makePalindrome(self, s: str) -> bool:
+        
+        # Check if its already a palindrome:
+        if s == s[::-1]:
+            return True
+
+        # Check for atleast 2 inconsistencies:
+        rev_str = list(s[::-1])
+        cnt = 0
+        str_len = len(s)
+        temp_str, swap_lst = [], []
+        for i in range(len(rev_str)):
+            if cnt <= 2 and rev_str[i] != s[i] and i not in swap_lst:
+                rev_str[str_len-i-1], rev_str[i] = rev_str[i], rev_str[str_len-i-1]
+                swap_lst.extend([i, str_len-i-1])
+                cnt += 1
+
+        if cnt <= 2:
+            return True
+        else:
+            return False
+
+
+    
